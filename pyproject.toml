@@ -3,5 +3,9 @@ name = "mini-rag-practise"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9"
-dependencies = []
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi==0.140.0",
+    "python-multipart==0.0.32",
+    "uvicorn==0.51.0",
+]
