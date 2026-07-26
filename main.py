@@ -1,6 +1,11 @@
-def main():
-    print("Hello from mini-rag-practise!")
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
-if __name__ == "__main__":
-    main()
+
+@app.get("/welcome")
+def welcome():
+    return {
+        "message":"Hello!"
+    }
