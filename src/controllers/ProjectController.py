@@ -4,8 +4,8 @@ from src.models import ResponseSignal
 import os 
 
 
-
 class ProjectController(BaseController):
+    
     def __init__(self):
         super().__init__()
 
@@ -15,7 +15,7 @@ class ProjectController(BaseController):
             project_id
         )
 
-        if  not os.path.exists(project_dir):
+        if not os.path.exists(project_dir):
             os.makedirs(project_dir)
 
         return project_dir
