@@ -17,5 +17,6 @@ dependencies = [
     "pymupdf==1.28.0",
     "python-dotenv==1.2.2",
     "python-multipart==0.0.32",
+    "qdrant-client==1.19.0",
     "uvicorn==0.51.0",
 ]
