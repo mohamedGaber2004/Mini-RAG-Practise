@@ -1,4 +1,6 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:venv",
-    "python.languageServer": "Pylance"
+    "python.languageServer": "Pylance",
+    "python.analysis.languageServerMode": "default",
+    "python.analysis.typeCheckingMode": "off"
 }
