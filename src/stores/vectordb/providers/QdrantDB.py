@@ -17,7 +17,6 @@ class QdrantDB(VectorDBInterface):
 
         self.logger = logging.getLogger(__name__)
 
-
     def connect(self):
         self.client = QdrantClient(path=self.db_path)
 
@@ -31,7 +30,7 @@ class QdrantDB(VectorDBInterface):
         return self.client.get_collections()
 
     def get_collection_info(self, collection_name: str) -> dict:
-        return self.client.get_collection() 
+        return self.client.get_collection(collection_name=collection_name) 
 
     def delete_collection(self, collection_name: str):
         if self.is_collection_existed(collection_name=collection_name):
@@ -62,6 +61,7 @@ class QdrantDB(VectorDBInterface):
         try:
             _ = self.client.upload_collection(
                 collection_name=collection_name,
+                ids=[record_ids],
                 vectors=[vectors],
                 payload=[
                     {
@@ -120,7 +120,6 @@ class QdrantDB(VectorDBInterface):
 
         return True
 
-    
     def search_by_vector(self, collection_name: str, vector: list, limit: int=5):
         return self.client.query_points(
             collection_name=collection_name,
