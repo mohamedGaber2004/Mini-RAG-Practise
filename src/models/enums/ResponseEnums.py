@@ -17,3 +17,5 @@ class ResponseSignal(Enum):
     VECTORDB_COLLECTION_RETRIEVED = "Vector db collection retrieved"
     VECTORDB_SEARCH_ERROR = "Vector db search error"
     VECTORDB_SEARCH_SUCCESS = "Vector db search success"
+    RAG_ANSWER_SUCCESS = "RAG Answer Success"
+    RAG_ANSWER_ERROR = "RAG Answer Error"
