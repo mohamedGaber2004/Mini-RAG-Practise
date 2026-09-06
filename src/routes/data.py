@@ -123,13 +123,13 @@ async def procee_endpoint(request: Request, project_id: int, process_request: Pr
         }
     else:
 
-        project_files = await asset_model.get_all_prject_assets(
+        project_files = await asset_model.get_all_project_assets(
             asset_project_id=project.project_id,
             asset_type=AssetTypeEnum.FILE.value,
         )
 
         project_files_ids = {
-            record.asset_project_id: record.asset_name
+            record.asset_id: record.asset_name
             for record in project_files
         }
 

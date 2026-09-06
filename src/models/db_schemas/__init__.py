@@ -1,1 +1,1 @@
-from minirag.schemes import Asset, DataChunk, Project, SQLAlchemyBase, RetrievedDocument
+from src.models.db_schemas.minirag.schemes import Asset, DataChunk, Project, SQLAlchemyBase, RetrievedDocument
