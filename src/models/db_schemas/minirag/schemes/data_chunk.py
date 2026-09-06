@@ -1,4 +1,4 @@
-from src.models.db_schemas.minirag.schemes.minirag_base import SQLAlchemyBase
+from .minirag_base import SQLAlchemyBase
 from sqlalchemy import Column, Integer, String, ForeignKey, func, DateTime
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
