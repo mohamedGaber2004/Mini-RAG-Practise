@@ -1,6 +1,6 @@
 from src.controllers.BaseController import BaseController
 from src.models.db_schemas import Project
-from src.models.db_schemas.data_chunk import DataChunk
+from src.models.db_schemas import DataChunk
 from src.stores.llm.LLMEnums import DocumentTypeEnum
 from typing import List
 import json
