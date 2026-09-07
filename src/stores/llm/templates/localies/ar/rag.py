@@ -1,5 +1,8 @@
 from string import Template
 
+#### RAG PROMPTS ####
+
+#### System ####
 
 system_prompt = Template("\n".join([
     "أنت مساعد لتوليد رد للمستخدم.",
@@ -12,7 +15,7 @@ system_prompt = Template("\n".join([
     "كن دقيقًا ومختصرًا في ردك. تجنب المعلومات غير الضرورية.",
 ]))
 
-
+#### Document ####
 document_prompt = Template(
     "\n".join([
         "## المستند رقم: $doc_num",
@@ -20,9 +23,11 @@ document_prompt = Template(
     ])
 )
 
-
+#### Footer ####
 footer_prompt = Template("\n".join([
-    "بناءً فقط على المستندات المذكورة الاتيه يرجى توليد إجابة للمستخدم.",
+    "بناءً فقط على المستندات المذكورة أعلاه، يرجى توليد إجابة للمستخدم.",
     "## السؤال:",
     "$query",
+    "",
+    "## الإجابة:",
 ]))

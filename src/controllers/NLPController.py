@@ -92,7 +92,7 @@ class NLPController(BaseController):
         documents_prompts = "\n".join([
             self.template_parser.get("rag", "document_prompt", {
                     "doc_num": idx + 1,
-                    "chunk_text": doc.text,
+                    "chunk_text": self.generation_client.process_text(doc.text),
             })
             for idx, doc in enumerate(retrieved_documents)
         ])
@@ -108,7 +108,7 @@ class NLPController(BaseController):
             )
         ]
 
-        full_prompt = "\n\n".join([ footer_prompt,  documents_prompts])
+        full_prompt = "\n\n".join([ documents_prompts, footer_prompt ])
 
         answer = self.generation_client.generate_text(
             prompt=full_prompt,
