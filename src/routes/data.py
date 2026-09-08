@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, UploadFile, status, Request
 from fastapi.responses import JSONResponse
 from src.helpers.config import get_settings, Settings
-from src.controllers import DataController, ProjectController, ProcessController
+from src.controllers import DataController, ProcessController, NLPController
 from src.routes.schemas.data import ProcessRequest
 from src.models import ResponseSignal
 from src.models.ProjectModel import ProjectModel
@@ -98,6 +98,13 @@ async def procee_endpoint(request: Request, project_id: int, process_request: Pr
         project_id=project_id
     )
 
+    nlp_controller = NLPController(
+        vectordb_client=request.app.vectordb_client,
+        generation_client=request.app.generation_client,
+        embedding_client=request.app.embedding_client,
+        template_parser=request.app.template_parser
+    )
+
     asset_model = await AssetModel.create_instance(
         db_client=request.app.db_client,
     )
@@ -150,8 +157,10 @@ async def procee_endpoint(request: Request, project_id: int, process_request: Pr
         db_client=request.app.db_client
     )
 
-    if do_reset == 1 : 
-                _ = await chunk_model.delete_chunks_by_project_id(project_id=project.project_id)
+    if do_reset == 1 :
+        collection_name = nlp_controller.create_collection_name(project_id=project_id)
+        _ = await request.app.vectordb_client.delete_collection(collection_name=collection_name)
+        _ = await chunk_model.delete_chunks_by_project_id(project_id=project.project_id)
 
     for asset_id, file_id in project_files_ids.items():
         file_content = process_controller.get_file_content(file_id=file_id)
