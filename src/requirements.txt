@@ -22,3 +22,9 @@ nltk==3.10.3
 prometheus-client==0.26.0
 starlette-exporter==0.24.0
 fastapi-health==0.4.0
+
+celery==5.7.0
+redis==8.1.0
+kombu==5.7.0
+billiard==4.3.2
+vine==5.1.0
