@@ -19,3 +19,5 @@ class ResponseSignal(Enum):
     VECTORDB_SEARCH_SUCCESS = "Vector db search success"
     RAG_ANSWER_SUCCESS = "RAG Answer Success"
     RAG_ANSWER_ERROR = "RAG Answer Error"
+    DATA_PUSH_TASK_READY="Data Push Task Ready"
+    PROCESS_AND_PUSH_WORKFLOW_READY="Process And Push Workflow Ready"
