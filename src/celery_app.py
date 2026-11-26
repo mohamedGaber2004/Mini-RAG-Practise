@@ -54,6 +54,7 @@ celery_app = Celery(
         "src.tasks.file_processing",
         "src.tasks.data_indexing",
         "src.tasks.process_workflow",
+        "src.tasks.maintenance"
     ]
 )
 
@@ -92,7 +93,7 @@ celery_app.conf.update(
     },
 
     beat_schedule={
-        'cleanup-old-task-records': {
+        'cleanup-old-task-records': { # this is just the name
             'task': "tasks.maintenance.clean_celery_executions_table",
             'schedule': 10,
             'args': ()
